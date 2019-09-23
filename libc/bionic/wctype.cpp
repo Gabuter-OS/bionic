@@ -131,7 +131,7 @@ wint_t towupper(wint_t wc) {
   if (wc < 0x80) {
     // Using EOR rather than AND makes no difference on arm, but saves an
     // instruction on arm64.
-    if (wc >= 'a' && wc <= 'z') return wc ^ 0x20;
+    if (wc >= 'a' && wc <= 'z') return wc & 0xdf;
     return wc;
   }
 
